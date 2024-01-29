@@ -1,266 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Tariq's Ingredient Finder</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinny's Handy Apps</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 1.7rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        input[type="text"] {
-            width: 80%;
-            padding: 10px;
-            font-size: 1rem;
-            background-color: rgba(255, 255, 255, 0.289);
-            border: 3px solid #000;
-        }
-
-        button {
-            display: inline;
-            border: 3px solid #000;
-            width: 20%;
-            font-size: 1.2rem;
-            height: 50px;
-            border-radius: 0;
-            background-color: rgba(255, 255, 255, 0.289);
-        }
-
-        #search {
-            display: flex;
-            box-shadow: 0 0 10px 5px #68c0ef63;
-            height: 50px;
-            transition: all 1s ease-out;
-        }
-        .search-middle{
-            transition: all 1s ease-out;
-            position: fixed;
-            top: 50%;
-            width: 1200px;
-        }
-        .search-top{
-            height: 50px;
-            position: relative;
-            transition: all 1s ease-out;
-        }
-
-        #search.search-transition {
-            display: flex;
-            box-shadow: 0 0 10px 5px #68c0ef63;
-            height: 50px;
-            transition: all 1s ease-out;
-        }
-
-        main {
-            padding-bottom:25px;
-        }
-
-        #results {
-            width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
-
-        #results > div {
-            display: flex;
-            align-items: center;
-            padding: 20px;
-        }
-
-        #results > div:nth-child(even) {
-            background-color: #ededed;
-        }
-
-        footer {
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            text-align: center;
-            margin: 0 auto;
-            
-            z-index: 2;
-        }
-
-        footer p {
-            font-size: 0.8rem;
-        }
-        #searchStatus{
-            background-color: #ededed;
-            line-height:30px;
-        }
-        video {
-  object-fit: cover;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
-
-
-    </style>
 </head>
 <body>
     <header>
-        <h1>Tariq's Ingredient Finder</h1>
+        <h1>Vinny's Handy Work Apps</h1>
     </header>
+
     <main>
-        <div id="search" class="search-middle">
-            <input type="text" id="ingredientSearch" placeholder="TYPE IN YOUR SEARCH">
-            <button onclick="searchIngredients()"><i class="fas fa-search"></i></button>
-            <button onclick="clearSearch()"><i class="fas fa-times"></i></button> 
-        </div>
-        <video playsinline autoplay muted loop poster="#" id="bgvid">
-            <!-- <source src="polina.webm" type="video/webm"> -->
-            <source src="./ingredients-bg.mp4" type="video/mp4">
-          </video>
-        <p id="searchStatus"></p>
-        <div id="results"></div>
+<div>
+    <ul>
+        <li><a href="/ingredient-finder.html">Ingredient Finder</a></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+
+    </ul>
+</div>
     </main>
-    <footer>
-        <p>&copy; 2023 - Tariqs Ingredient Finder - All rights reserved. <br> Version 1.01.01 BETA - Don't @ me</p>
-    </footer>
-    <script>
-        // Read the CSV file and create a data structure to store the information.
-        let data = [];
-
-        fetch('https://ofracosmetics.com/product-feed.csv')
-            .then(response => response.text())
-            .then(csvData => {
-                data = parseCSV(csvData);
-            });
-
-        // Function to parse the CSV data and return it as an array of objects.
-        function parseCSV(csv) {
-            const lines = csv.split('\n');
-            const headers = lines[0].split(',');
-            const parsedData = [];
-
-            for (let i = 1; i < lines.length; i++) {
-                const currentLine = splitCSVLine(lines[i]);
-                const entry = {};
-
-                for (let j = 0; j < headers.length; j++) {
-                    entry[headers[j]] = currentLine[j];
-                }
-
-                parsedData.push(entry);
-            }
-
-            return parsedData;
-        }
-
-        // Function to split a CSV line, taking care of comma delimiters inside double quotes.
-        function splitCSVLine(line) {
-            const values = [];
-            let current = '';
-            let inQuotes = false;
-
-            for (let i = 0; i < line.length; i++) {
-                const char = line[i];
-
-                if (char === '"') {
-                    inQuotes = !inQuotes;
-                } else if (char === ',' && !inQuotes) {
-                    values.push(current.trim());
-                    current = '';
-                } else {
-                    current += char;
-                }
-            }
-
-            values.push(current.trim());
-            return values;
-        }
-
-        // Function to search for ingredients.
-        function searchIngredients() {
-            const searchTerm = document.getElementById('ingredientSearch').value.toLowerCase().trim();
-            const searchStatus = document.getElementById('searchStatus');
-            let searchDiv = document.getElementById("search");
-            if (searchTerm === '') {
-                searchStatus.textContent = 'Please enter a search term.';
-                return;
-            }
-
-            const searchWords = searchTerm.split(' ');
-
-            if (searchWords.length > 1) {
-                searchStatus.textContent = 'Please enter only one term at a time.';
-                return;
-            }
-
-            const results = data.filter(product => {
-                const ingredients = product['Contentful Ingredients'];
-                return ingredients && ingredients.toLowerCase().includes(searchTerm);
-            });
-
-            if (results.length > 0) {
-                searchStatus.textContent = `Your search for "${searchTerm}" has returned ${results.length} results.`;
-            } else {
-                searchStatus.innerHTML = 'No results found. Check your spelling or try the <a href="https://cosmetics.specialchem.com/inci-names" target="_blank">INCI Database</a>';
-;
-            }
-            bgvid.style.display = 'none';
-            searchDiv.className += " search-top";
-            
-            displayResults(results);
-        }
-                        const inputField = document.getElementById('ingredientSearch');
-                     inputField.addEventListener('keydown', function(event) {
-                if (event.key === 'Enter') {
-                                   searchIngredients();
-                }
-            });
-
-        // Function to display the search results.
-        function displayResults(results) {
-            const resultsDiv = document.getElementById('results');
-            resultsDiv.innerHTML = '';
-
-            for (const product of results) {
-                let productHandle = product['Product Handle'];
-                const productIngredients = product['Contentful Ingredients'];
-                const productImage = product['Contentful Image'];
-
-                // Replace hyphens with spaces and convert to title case
-                productHandle = productHandle.replace(/-/g, ' ').replace(/\w\S*/g, function (txt) {
-                    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-                });
-
-                // Display
-                const productResult = document.createElement('div');
-                productResult.innerHTML = `
-                    <img src="https://${productImage}?w=200" alt="${productHandle} Image" width="200">
-                    <div>
-                        <p><strong> ${productHandle}</strong></p>
-                        <p><strong>Ingredients: </strong>${productIngredients}</p>
-                    </div>
-                `;
-
-                resultsDiv.appendChild(productResult);
-            }
-        }
-         // Function to clear the search results.
-         function clearSearch() {
-            document.getElementById('ingredientSearch').value = ''; // Clear the input field
-            document.getElementById('searchStatus').textContent = ''; // Clear the search status
-            const resultsDiv = document.getElementById('results');
-            resultsDiv.innerHTML = ''; // Clear the search results
-        }
-    </script>
+   
+    
 </body>
 </html>
