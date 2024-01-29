@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Expiration Calculator </title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+  <style type="text/css">
+    *{
+      font-family: 'roboto', sans-serif;
+    }
+    html{
+      padding:0;
+      margin:0;
+
+    }
+    header{
+      height:20vh;
+    }
+    main{
+      display:flex;
+      justify-content: space-evenly;
+      height:50vh;
+
+    }
+    footer{
+      height:20vh;
+      text-align:center;
+    }
+    h1{
+      font-weight:300;
+      text-align:center;
+    }
+    .wrap{
+      width:100vw;
+      justify-content: space-evenly;
+      text-align:center;
+    }
+    .inputs > *{
+      height:40px;
+      font-size:20px;
+    }
+    .buttons > *{
+      margin-top:20px;
+      height:50px;
+      font-size:30px;
+      background-color:pink;
+      color:#535353;
+      border: 0px solid white;
+      cursor: pointer;
+    }
+    .buttons > *:hover{
+
+      background-color:#535353;
+      color:pink;
+      border: 0px solid white;
+      cursor: pointer;
+    }
+
+
+
+  </style>
+  </head>
+  <body>
+<header><h1>EXPIRATION CALCULATOR</header>
+<main>
+
+  <form id="month-calc" action="submit" >
+
+
+  <div class="wrap inputs">
+
+      <input type="date" id="start_date" placeholder="Start Date"/>
+      <input type="number" id="days" placeholder="Days"/>
+      <input type="date" id="end_date" placeholder="End Date" readonly/>
+
+  </div>
+  <div class="wrap buttons">
+
+    <input type="button" id="todays_date" value="Use Todays Date" />
+    <input type="button" id="30_mos" value="30 MONTHS" />
+    <input type="button" id="34_mos" value="34 MONTHS" />
+    <input type="submit" name="submit" id="date_enter" value="ENTER">
+  </div>
+
+
+    </form>
+
+</main>
+
+
+<footer>
+<button id="refresh_page" >Refresh Page</button>
+  <p>MONTH CALCULATOR 	&copy;2023 VLD DESIGN V1.02 BETA</p></footer>
+
+
+<script type="text/javascript">
+  ;(function($, window, document, undefined){
+      $("#month-calc").on("submit", function(){
+      event.preventDefault();
+         var date = new Date($("#start_date").val()),
+             days = parseInt($("#days").val(), 10);
+
+          if(!isNaN(date.getTime())){
+              date.setDate(date.getDate() + days);
+
+              $("#end_date").val(date.toInputFormat());
+          } else {
+              alert("Invalid Date");
+          }
+      });
+
+      Date.prototype.toInputFormat = function() {
+         var yyyy = this.getFullYear().toString();
+         var mm = (this.getMonth()+1).toString();
+         var dd  = this.getDate().toString();
+         return yyyy + "-" + (mm[1]?mm:"0"+mm[0]) + "-" + (dd[1]?dd:"0"+dd[0]);
+      };
+  })(jQuery, this, document);
+
+    $( "#todays_date" ).click(function() {
+      var d = new Date();
+      var month = d.getMonth()+1;
+      var day = d.getDate();
+
+      var currentDate = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day  ;
+
+
+
+      $('#start_date').val(currentDate);
+    });
+
+    var thirtyMonths = 900;
+    var thirtyFourMonths = 1020;
+
+    $( "#30_mos" ).click(function() {
+        $('#days').val(thirtyMonths);
+    });
+    $( "#34_mos" ).click(function() {
+      $('#days').val(thirtyFourMonths);
+    });
+    $(document).ready(function(){
+           $("#refresh_page").click(function(){
+               location.reload(true);
+           });
+       });
+
+</script>
+  </body>
+</html>

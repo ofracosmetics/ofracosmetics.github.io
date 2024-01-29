@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UPC-A Barcode Generator</title>
+    <style>
+        @font-face{
+    font-family:'SuisseeIntl-Regular';
+    src: url('https://cdn.shopify.com/s/files/1/0989/8416/files/SuisseIntl-Regular-WebS.eot?v=1679586976'); 
+        }
+    @font-face{
+    font-family:'SuisseeIntl-Regular';
+    src: url('https://cdn.shopify.com/s/files/1/0989/8416/files/SuisseIntl-Regular-WebS.ttf?v=1679586976'); 
+    }
+        #barcode text, h1 {
+            font-family: 'SuisseeIntl-Regular', 'Arial', sans-serif;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.3/dist/JsBarcode.all.min.js"></script>
+</head>
+<body>
+    <h1>UPC-A Barcode Generator</h1>
+    <input id="upc-input" type="text" placeholder="Enter 12 digit UPC-A code" />
+    <button id="generate-btn">Generate Barcode</button>
+    <button id="download-btn">Download Barcode</button>
+    
+    <svg id="barcode"></svg>
+
+    <script>
+        document.getElementById('generate-btn').addEventListener('click', function() {
+            var upc = document.getElementById('upc-input').value;
+            JsBarcode("#barcode", upc, {
+                format: "upc",
+                displayValue: true,
+                fontSize: 18,
+                font: 'SuisseeIntl-Regular',
+                background: 'rgba(0,0,0,0)'
+            });
+        });
+
+        document.getElementById('download-btn').addEventListener('click', function() {
+            var barcodeSvg = document.getElementById('barcode');
+            var upcValue = document.getElementById('upc-input').value;
+            var svgData = new XMLSerializer().serializeToString(barcodeSvg);
+
+            var blob = new Blob([svgData], { type: 'image/svg+xml' });
+            var link = document.createElement('a');
+
+            // Set the download attribute with the barcode value
+            link.download = upcValue ? upcValue + '_barcode.svg' : 'barcode.svg';
+
+            link.href = window.URL.createObjectURL(blob);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    </script>
+</body>
+</html>

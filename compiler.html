@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title></title>
+      <script src="https://code.jquery.com/jquery-3.4.1.js"> </script>
+      <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Teko&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <style>
+         * {
+         margin:0;
+         padding:0;
+         border: collapse;
+         }
+         p{
+          font-family: 'Roboto', sans-serif;
+         }
+         h1, h2, h3, h4, h5, h6{
+          font-family: 'Teko', sans-serif;
+
+         }
+         header{
+         text-align: center;
+         margin-top:30px;
+         height:25vh;
+         display:flex;
+         flex-direction: row;
+         justify-content: space-evenly;
+         color:#fff;
+         }
+         .logo{
+          height: 100px;;
+          }
+          .heading{
+          height: 25vh;
+          }
+         body{
+         background: linear-gradient(#ff0958, #f9ba91);
+         height:100vh;
+
+         }
+         .wrap{
+         display: flex;
+         flex-direction: row;
+         justify-content: space-evenly;
+         flex-wrap: wrap;
+         width:80%;
+         min-width: 675px;
+         margin: 0 auto;
+
+         }
+         #input{
+         width:40%;
+         min-width:300px;
+         height:50vh;
+         margin:5px 10px;
+         text-align: center;
+         }
+         #input textarea, #output textarea{
+         width: 100%;
+         border: 0px solid #535353;
+         margin-bottom: -3px;
+         }
+         textarea:focus {
+             outline: none !important;
+             border:1px solid red;
+             box-shadow: 0 0 10px #0682c6;
+         }
+         #input h2, #output h2{
+           text-align: center;
+           background-color: #535353;
+           color:#fff;
+         }
+         button{
+         width: 100%;
+         height: 40px;
+         background-color: #535353;
+         border: 2px solid #535353;
+         font-size: 20px;
+         color:#fff;
+         font-family: 'Teko', sans-serif;
+         }
+         button:hover{
+           background-color: #fff;
+           border: 2px solid #535353;
+           font-size: 20px;
+           color:#535353;
+         }
+         button:active{
+           background-color:#0682c6;
+           color:#fff;
+         }
+         #ingredient-concat-enter{
+         width:100%;
+         }
+         #ingredient-concat-result{
+          width:100%;
+         }
+         #output{
+         width:40%;
+         min-width:300px;
+         height:50vh;
+         margin:5px 10px;
+         text-align: center;
+         }
+         #output-ingredients{
+         background-color: #fff;
+         border: 2px solid #000;
+
+         }
+         footer{
+         position: relative;
+         bottom: 0;
+         text-align: center;
+         display:flex;
+         flex-direction: column;
+         justify-content: center;
+
+         }
+         footer p{
+           font-size:.5rem;
+         }
+        .ing-enter::after{
+          font-family: "FontAwesome";
+          content:"\f0d0";
+          padding-left: 5px;
+
+        }
+        .ing-copy::after{
+          font-family: "FontAwesome";
+          content:"\f0c5";
+          padding-left: 5px;
+
+        }
+        .help{
+          font-family: "Roboto";
+          background-color: #535353;
+          color:#fff;
+          padding: 1rem 2rem;
+          text-decoration: none;
+
+        }
+      </style>
+   </head>
+   <body>
+      <header>
+        <div>
+          <img class="logo" src="./ofra-logo-transparent-white.png">
+        </div>
+        <div class="heading">
+          <h1>INGREDIENT COMPILER</h1>
+          <h3>Copy and paste the cells and click "RUN IT"</h3>
+          <h3>Click "COPY AND CLEAR" to... copy and clear</h3>
+        </div>
+      </header>
+      <main>
+         <div class="wrap">
+            <div id="input">
+               <h2>INPUT</h2>
+               <form id="ingredient-concat-enter" action="">
+                  <textarea rows = "10" name = "description" id="ingredients"></textarea>
+
+                  <button class="ing-enter" type="submit" onclick="clear()" >RUN IT</button>
+               </form>
+            </div>
+            <div id="output">
+               <h2>OUTPUT</h2>
+               <!-- <div id="output-ingredients">
+                  </div> -->
+               <form id="ingredient-concat-result" action="">
+                  <textarea rows = "10" name = "description" id="output-ingredients"></textarea>
+
+                  <button class="ing-copy" type="submit" onclick="copyAndClear()" >COPY & CLEAR</button>
+               </form>
+            </div>
+         </div>
+
+        </main>
+      <footer>
+        <p>INGREDIENT COMPILER VERSION 1.05 VLD DESIGN (02/27/23)</p><br>
+         <a class="help" href="slack://user?team=T3QGZ5YSZ&id=D3R4AMEA1">NEED HELP?!</a>
+
+      </footer>
+
+      <script>
+         // NOT NEEDED !!
+         // $( document ).load(function() {
+         //
+         // document.querySelector("textarea").focus(); //set the focus - cursor at end
+         // document.querySelector("textarea").setSelectionRange(0,0); // place cursor at start
+         // )};
+
+
+           $( "#ingredient-concat-enter" ).submit(function( event ) {
+           event.preventDefault();
+
+           var ingredients = $('#ingredients').val();
+           var replacedIngredients = ingredients.replace(/\r?\n/g, ', ');
+           var mayContainIngredients = replacedIngredients.replace(' , ', ' MAY CONTAIN +/-: ');
+           var periodIngredients = mayContainIngredients.replace(', M', '. M');
+           var semifinalIngredients = periodIngredients.replace( /Water. /g,'Deionized Water / Aqua, ').replace( /Fragrance, /g, 'Fragrance / Parfum, ');
+           var finalIngredients = semifinalIngredients.slice(0,-2).toLowerCase().substr(0,1).toUpperCase()+semifinalIngredients.substr(1);
+          
+            $('#output-ingredients').append(finalIngredients).prepend('Ingredients: ').append('.').text($("#output-ingredients").text().replace('Ci ', 'CI'));
+            $("#output-ingredients");
+            $('#ingredients').val('');
+            
+            //
+           });
+
+           function clear(){document.getElementById("ingredient-concat-enter").reset();};
+
+           function copyAndClear() {
+             var copyText = document.getElementById("output-ingredients");
+             copyText.select();
+             copyText.setSelectionRange(0, 99999);
+             document.execCommand("copy");
+             clear();
+           }
+
+              </script>
+   </body>
+</html>
