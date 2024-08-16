@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Title Case Converter</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+    }
+    #container {
+        text-align: center;
+    }
+    #textInput {
+
+    width: 400px;
+    height: 150px;
+    }
+    #output{
+        padding:20px;
+    }
+    
+</style>
+</head>
+<body>
+
+<div id="container">
+    <h1>Title Case Converter</h1>
+    <form id="titleCaseForm">
+        <label for="textInput">Enter Text:</label><br>
+        <input type="text" id="textInput" name="textInput"><br><br>
+        <input type="button" value="Convert to Title Case" onclick="convertToTitleCase()">
+    </form>
+    <div id="output"></div>
+    <!-- <button onclick="copyToClipboard()">Copy to Clipboard</button> -->
+</div>
+
+<script>
+    function convertToTitleCase() {
+        var inputText = document.getElementById("textInput").value;
+        var words = inputText.toLowerCase().split(" ");
+        for (var i = 0; i < words.length; i++) {
+            words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+        }
+        var result = words.join(" ");
+
+        // Perform additional conversions
+        result = result.replace(/\bCi\b/gi, "CI");
+        result = result.replace(/\bcapric\b/gi, "Capric");
+        result = result.replace(/\bEdta\b/gi, "EDTA");
+        result = result.replace(/\bPeg\/ppg\b/gi, "PEG/PPG");
+        result = result.replace(/\bPvp\b/gi, "PVP");
+        result = result.replace(/\bHcl\b/gi, "HCL");
+        result = result.replace(/\bBht\b/gi, "BHT");
+
+        document.getElementById("output").innerText = result;
+
+        copyToClipboard();
+    }
+
+    function copyToClipboard() {
+        var textToCopy = document.getElementById("output").innerText;
+        navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+        //     alert("Text copied to clipboard!");
+        document.getElementById("textInput").value = "";
+        })
+        .catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    }
+</script>
+</body>
+</html>
