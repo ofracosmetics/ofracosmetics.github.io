@@ -1,213 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OFRA Team Announcements</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-       @font-face {
-    font-family: 'SuisseIntl';
-    src: url('https://cdn.shopify.com/s/files/1/0989/8416/files/SuisseIntl-Regular.ttf?v=1679586977') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-        html, body {
-            height: 100%;
-            
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-            margin: 0;
-            background-color: #f5f5f5;
-            font-family: 'SuisseIntl', Arial, sans-serif;
-
-        }
-
-        .container {
-            flex: 1;
-        }
-
-        .navbar, .footer {
-            background-color: #000;
-            color: white;
-        }
-
-        .navbar-brand, .footer p {
-            color: #62cbba;
-        }
-        .navbar-brand .ofra-icon{
-            width:60px;
-            filter: invert(1);
-        }
-
-        .announcement-bar {
-            background-color: #62cbba;
-            color: #000;
-            padding: 10px 0;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .kanban-column {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 0px;
-            margin-bottom: 20px;
-            padding: 15px;
-
-        }
-
-        .kanban-header {
-            background-color: #62cbba;
-            color: #fff;
-            font-weight: bold;
-            padding: 10px;
-            font-size: 1.75em;
-            border-radius: 0px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .kanban-item {
-            background-color: #f8f9fa;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 0px;
-            margin-bottom: 10px;
-        }
-
-        .footer {
-            background-color: #000;
-            color: #62cbba;
-            padding: 20px;
-            text-align: center;
-            margin-top: auto; 
-        }
-        .kanban-item img{
-            width:100%;
-        }
-        h4{
-            font-size:1.2em;
-        }
-
-
-       
-        @media (max-width: 767px) {
-            .navbar-nav {
-                text-align: center;
-            }
-
-            .kanban-header {
-                font-size: 1em;
-            }
-
-            .kanban-item {
-                font-size: 0.9em;
-                text-align: center;
-            }
-
-            .announcement-bar {
-                font-size: 1em;
-            }
-        }
-    </style>
-
-
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,es',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-</head>
-
-<body>
-
-          
-
-        
- 
-    <div class="announcement-bar">
-        
-        📢 Important Announcement: <br>
-        We are monitoring Hurricane MILTON <br>
-        Read more below
-    </div>
-
-
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#"><img class="ofra-icon" src="https://cdn.shopify.com/s/files/1/0989/8416/files/ofra-icon.png?v=1717689105" alt="">Team Announcements</a>
-
-             
-             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>OFRA Team Announcements</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <style>
+         @font-face {
+         font-family: 'SuisseIntl';
+         src: url('https://cdn.shopify.com/s/files/1/0989/8416/files/SuisseIntl-Regular.ttf?v=1679586977') format('truetype');
+         font-weight: normal;
+         font-style: normal;
+         }
+         html, body {
+         height: 100%;
+         }
+         body {
+         display: flex;
+         flex-direction: column;
+         margin: 0;
+         background-color: #f5f5f5;
+         font-family: 'SuisseIntl', Arial, sans-serif;
+         }
+         .container {
+         flex: 1;
+         }
+         .navbar, .footer {
+         background-color: #000;
+         color: white;
+         }
+         .navbar-brand, .footer p {
+         color: #62cbba;
+         }
+         .navbar-brand .ofra-icon{
+         width:60px;
+         filter: invert(1);
+         }
+         .announcement-bar {
+         background-color: #62cbba;
+         color: #000;
+         padding: 10px 0;
+         text-align: center;
+         font-weight: bold;
+         }
+         .kanban-column {
+         background-color: #fff;
+         border: 1px solid #ddd;
+         border-radius: 0px;
+         margin-bottom: 20px;
+         padding: 15px;
+         }
+         .kanban-header {
+         background-color: #62cbba;
+         color: #fff;
+         font-weight: bold;
+         padding: 10px;
+         font-size: 1.75em;
+         border-radius: 0px;
+         margin-bottom: 10px;
+         text-align: center;
+         }
+         .kanban-item {
+         background-color: #f8f9fa;
+         border: 1px solid #ddd;
+         padding: 10px;
+         border-radius: 0px;
+         margin-bottom: 10px;
+         }
+         .footer {
+         background-color: #000;
+         color: #62cbba;
+         padding: 20px;
+         text-align: center;
+         margin-top: auto; 
+         }
+         .kanban-item img{
+         width:100%;
+         }
+         h4{
+         font-size:1.2em;
+         }
+         .txt-sml{
+            font-size:.7em;
+         }
+         @media (max-width: 767px) {
+         .navbar-nav {
+         text-align: center;
+         }
+         .kanban-header {
+         font-size: 1em;
+         }
+         .kanban-item {
+         font-size: 0.9em;
+         text-align: center;
+         }
+         .announcement-bar {
+         font-size: 1em;
+         }
+         }
+      </style>
+      <script type="text/javascript">
+         function googleTranslateElementInit() {
+             new google.translate.TranslateElement({
+                 pageLanguage: 'en',
+                 includedLanguages: 'en,es',
+                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+             }, 'google_translate_element');
+         }
+      </script>
+      <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+   </head>
+   <body>
+      <div class="announcement-bar">
+         We will be closed 11/26-11/27
+      </div>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+         <a class="navbar-brand" href="#"><img class="ofra-icon" src="https://cdn.shopify.com/s/files/1/0989/8416/files/ofra-icon.png?v=1717689105" alt="">Team Announcements</a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#billetin">Bulletin Board</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://ofracosmetics.github.io/employee-sms-signups.html">Notifications</a>
-                </li>
-
+               <li class="nav-item">
+                  <a class="nav-link" href="#">Home</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="#billetin">Bulletin Board</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="https://ofracosmetics.github.io/employee-sms-signups.html">Notifications</a>
+               </li>
             </ul>
-            
-        </div>
-        </nav>
-
-        <div style="width: 100% height:25px; background-color:#62cbba; margin: 0 auto">
-            <div style="margin: 0 auto; background-color: #62cbba;" id="google_translate_element"></div>
-             </div>
-    <div class="container mt-4">
-        <div class="row">
-           
+         </div>
+      </nav>
+      <div style="width: 100% height:25px; background-color:#62cbba; margin: 0 auto">
+         <div style="margin: 0 auto; background-color: #62cbba;" id="google_translate_element"></div>
+      </div>
+      <div class="container mt-4">
+         <div class="row">
             <div class="col-lg-12">
-                <div class="kanban-column">
-                    <div class="kanban-header" id="billetin">❗IMPORTANT UPDATES❗</div>
-                    <div class="kanban-item">
-                        <h4>We are monitoring Hurricane Milton</h4>
-                        <a href="https://www.nhc.noaa.gov/refresh/graphics_at4+shtml/092734.shtml?expCone#contents">
-                            <img src="https://www.nhc.noaa.gov/storm_graphics/AT14/refresh/AL142024_5day_expCone+png/092734_5day_expCone.png"/>
-                        </a>
-                        <h5><a href="https://ofracosmetics.github.io/employee-sms-signups.html" >Please ensure you are subscribed to updates for emergency notifications</a></h5>
-                    </div>
-                </div>
-                <div class="kanban-column">
-                    <div class="kanban-header"> 📆 Holidays 📆</div>
-                    <div class="kanban-item"><h4>We will be off 11/28-11/29 for Thanksgiving🦃</h4>
-                         <em>This is not a paid Holiday</em>
-                </div>
-                </div>
-                <div class="kanban-column">
-                    <div class="kanban-header"> 🕺 Events 💃</div>
-                    <div class="kanban-item"><h4>Birthdays🎂</h4>
-                       The last Thursday of every month!
-                   </div>
-                   <div class="kanban-item"><h4>Bagel Day 🥯</h4>
+               <div class="kanban-column">
+                  <div class="kanban-header" id="billetin">❗IMPORTANT UPDATES❗</div>
+                  <div class="kanban-item">
+                     <h4>Vote for your food selection for the Holiday Party</h4>
+                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSf2YCxndaZQsKXWCHoZ3aGLJW0-4wpXPk4N-0Tg88k1trkZkg/viewform?usp=sf_link">
+                     Food Selection Survey (English)
+                     </a>
+                     <a href="https://docs.google.com/forms/d/e/1FAIpQLScN06waAG9AeBS5k9TbcP0SzT8qAfJp8EcQslem9CbYkDQSLQ/viewform?usp=sf_link">
+                     Food Selection Survey (Espanol)
+                     </a>
+                  </div>
+               </div>
+               <div class="kanban-column">
+                  <div class="kanban-header">📆 Holidays 📆</div>
+                  <div class="kanban-item">
+                     <h4>We will be off 11/28-11/29 for Thanksgiving 🦃</h4>
+                     <em>This is not a paid Holiday</em>
+                  </div>
+                  <div class="kanban-item">
+                     <h4>We will be off 12/24-12/25 for Christmas 🎄</h4>
+                     <em>Christmas Day is a paid holiday for full-time employees that are past their probation period.<br>Christmas Eve is not a paid Holiday<br><span class="txt-sml">Please check with your direct manager for more information</span> </em>
+                  </div>
+                  <div class="kanban-item">
+                     <h4>We will be off 12/31-1/1 for New Years 🪩</h4>
+                     <em>New Years Day is a paid holiday for full-time employees that are past their probation period.<br> New Years Eve is not a paid Holiday<br><span class="txt-sml">Please check with your direct manager for more information</span></em>
+                  </div>
+               </div>
+               <div class="kanban-column">
+                  <div class="kanban-header"> 🕺 Events 💃</div>
+                  <div class="kanban-item">
+                     <h4>Birthdays🎂</h4>
+                     The last Thursday of every month!
+                  </div>
+                  <div class="kanban-item">
+                     <h4>Bagel Day 🥯</h4>
                      The first Friday of every month!
-                </div>
-                    <div class="kanban-item"><h4>Holidays are coming 🎄</h4>
-                         we will be asking for your help in choosing a venue!
-                    </div>
-                </div>
+                  </div>
+                  <div class="kanban-item">
+                     <h4>Holiday Party 🎄</h4>
+                      Where: OFRA HQ When: 12/20 @ 12PM
+                  </div>
+               </div>
             </div>
-        </div>
-
-        
-        <!-- <div class="row mt-4">
+         </div>
+         <!-- <div class="row mt-4">
             <div class="col-lg-12">
                 <section class="mb-5">
                   
@@ -219,19 +195,15 @@
                    
                 </section>
             </div>
-        </div> -->
-    </div>
-
-
-    <footer class="footer">
-        <div id="google_translate_element"></div><br>
-        <p>&copy; 2024 OFRA Cosmetics | Perfecting Beauty. Everyday.</p>
-    </footer>
-
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-
+            </div> -->
+      </div>
+      <footer class="footer">
+         <div id="google_translate_element"></div>
+         <br>
+         <p>&copy; 2024 OFRA Cosmetics | Perfecting Beauty. Everyday.</p>
+      </footer>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   </body>
 </html>
